@@ -1,2 +1,8 @@
-print("Time is money \U0001F941")
-print("Ɛ")
+quote = ("Time is money")
+print(quote)
+emoji = "\U0001F941"
+print(emoji)
+
+
+
+
