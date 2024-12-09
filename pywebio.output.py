@@ -1,1 +1,0 @@
-put_text = print('wqf')
