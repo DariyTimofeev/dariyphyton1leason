@@ -1,37 +1,26 @@
-from pywebio.input import input
-from pywebio.output import put_text, put_success, put_error, clear
-from pywebio import start_server
-import logging
+from pywebio.input import input,NUMBER
+from pywebio.output import put_text
 
-def school_quiz():
-    questions = [
-        {"question": "Яка планета є найбільшою у Сонячній системі?", "answer": "юпітер"},
-        {"question": "Скільки континентів на Землі?", "answer": "7"},
-        {"question": "Як називається столиця Франції?", "answer": "париж"},
-        {"question": "Який метал є основним у виробництві алюмінієвої фольги?", "answer": "алюміній"},
-        {"question": "Скільки кольорів у веселці?", "answer": "7"}
-    ]
 
-    user_name = input("Введіть ваше ім'я:")
-    logging.info(f"Користувач розпочав вікторину: {user_name}")
+def calculate_ticket_price():
+    while True:
 
-    score = 0
+        age = input("Введіть свій вік (або натисніть Enter для виходу):", type=NUMBER)
 
-    for index, item in enumerate(questions):
-        clear()
-        user_answer = input(item["question"]).strip().lower()  # Отримуємо відповідь користувача
-        if user_answer == item["answer"]:
-            put_success("Відповідь вірна!")
-            score += 1
-        else:
-            put_error(f"Неправильно. Правильна відповідь: {item['answer']}")
+        if age is None:
+            break
 
-        logging.debug(
-            f"Запитання {index + 1}: '{item['question']}' | Відповідь: '{user_answer}' | Очікувана відповідь: '{item['answer']}'")
+        if age < 6:
+            price = "Безкоштовно"
+        elif 6 <= age <= 12:
+            price = "50 грн (знижка 50%)"
+        elif 13 <= age <= 17:
+            price = "75 грн (знижка 25%)"
+        elif 18 <= age < 60:
+            price = "100 грн (повна ціна)"
+        else:  # age >= 60
+            price = "70 грн (знижка 30%)"
 
-    total_questions = len(questions)
-    percentage = (score / total_questions) * 100
-    put_text(f"{user_name}, ви набрали {score} балів із {total_questions} ({percentage:.2f}%).")
-    logging.info(
-        f"Користувач {user_name} завершив вікторину з результатом {score}/{total_questions} ({percentage:.2f}%).")
-school_quiz()
+        put_text(f"Вартість квитка: {price}")
+
+calculate_ticket_price()
