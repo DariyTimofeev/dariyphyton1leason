@@ -5,5 +5,5 @@ def long_strings(strings):
 
     return long_strings
 
-strings_list = ["короткий", "длинныйстрокдлинный", "ещеодин", "строчка", "очень-очень-длинаястрочка"]
+strings_list = ["1234", "1234567890,10", "123", "12345", "1234567890,10,11"]
 long_strings(strings_list)
