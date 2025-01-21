@@ -7,5 +7,4 @@ def calculate_sum():
         total += number
     print(f"Сума чисел: {total}")
 
-# Виклик функції
 calculate_sum()
